@@ -1,7 +1,9 @@
 import React from 'react';
 import {Input, Button} from 'antd';
-import {UserOutlined} from '@ant-design/icons';
+import {UserOutlined, LockOutlined,SmileOutlined } from '@ant-design/icons';
 import axios from 'config/axios'
+import {Link} from 'react-router-dom';
+import 'components/SignUp/signUp.scss'
 
 interface SignUpState {
   account: string,
@@ -49,19 +51,25 @@ class SignUp extends React.Component<any, SignUpState> {
 
   render() {
     return (
-      <div>
-        <Input size="large"
-               value={this.state.account}
+      <div id="signUp">
+        <h1>账号注册</h1>
+        <Input value={this.state.account}
+               allowClear
                onChange={this.onChangeAccount}
                placeholder="请输入用户名"
                prefix={<UserOutlined/>}/>
         <Input.Password value={this.state.password}
+                        allowClear
                         onChange={this.onChangePassword}
-                        placeholder="请输入密码"/>
+                        placeholder="请输入密码"
+                        prefix={<LockOutlined/>}/>
         <Input.Password value={this.state.password_confirmation}
+                        allowClear
                         onChange={this.onChangePasswordCon}
-                        placeholder="确认密码"/>
-        <Button type="primary" onClick={this.submit}>注册</Button>
+                        placeholder="确认密码"
+                        prefix={<SmileOutlined/>}/>
+        <Button className="signUpButton" type="primary" onClick={this.submit}>注册</Button>
+        <p>如果你已经有账号了，请立即<Link to='/login'>登录</Link></p>
       </div>
     );
   }
