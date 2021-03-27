@@ -1,14 +1,20 @@
 import React from 'react';
 import './App.css';
-import {Rate} from 'antd'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Index from './components/Index/Index';
+import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
 
-function App() {
-  return (
-    <div className="App">
-     hello word
-      <Rate />
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <Route path='/' component={Index}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/signUp' component={SignUp}/>
+      </Router>
+    );
+  }
 }
 
 export default App;
