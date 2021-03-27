@@ -43,7 +43,7 @@ class SignUp extends React.Component<any, SignUpState> {
         account: this.state.account,
         password: this.state.password,
       })
-      console.log('成功');
+      this.props.history.push('/')
     }catch (e){
       throw new Error(e)
     }
